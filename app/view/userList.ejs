@@ -30,8 +30,17 @@
                                     
                                     <td>
                                         
-                                        <a href="" data-toggle='modal' data-target='#editUser'><i class="fas fa-edit"></i></a>
-                                        <a href="" data-toggle='modal' data-target='#deleteUser'><i class="fas fa-trash-alt"></i></a>
+                                        <span id="test">
+                                            <!-- <a href="/user/<%= data[i]._id %>" data-toggle='modal' data-target='#editUser'>
+                                                <i class="fas fa-edit"></i>
+                                            </a> -->
+                                            <a href="/user/<%= data[i]._id %>" >
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </span>
+                                        <a href="" data-toggle='modal' data-target='#deleteUser'>
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
 
                                     </td>
                                 </tr>
@@ -42,7 +51,7 @@
                 <h1><%= data[0].user_name %></h1>
             </div>
             
-        </div>
+        
 
 <% include partials/modals/editUser.ejs %>
 <% include partials/footer.ejs  %>
