@@ -1,0 +1,48 @@
+<% include partials/header.ejs  %>
+<% include partials/navbar.ejs  %>
+
+
+<h3><%= data.length; %></h3>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Manage Users</h1>
+                <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <% for(var i =0; i < data.length; i++){ %>
+                                <tr>
+                                    <th scope="row"><%= i %></th>                                    
+                                    <td><%= data[i].user_name %></td>
+                                    <td><%= data[i].email %></td>
+                                    <td><%= data[i].password %></td>
+                                    <td><%= data[i].active %></td>
+                                    
+                                    <td>
+                                        
+                                        <a href="" data-toggle='modal' data-target='#editUser'><i class="fas fa-edit"></i></a>
+                                        <a href="" data-toggle='modal' data-target='#deleteUser'><i class="fas fa-trash-alt"></i></a>
+
+                                    </td>
+                                </tr>
+                            <% } %>
+
+                        </tbody>
+                      </table>
+                <h1><%= data[0].user_name %></h1>
+            </div>
+            
+        </div>
+
+<% include partials/modals/editUser.ejs %>
+<% include partials/footer.ejs  %>
