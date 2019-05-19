@@ -52,11 +52,12 @@ exports.updateUser = (req, res) => {
     console.log(data);    
     
     userModel.findByIdAndUpdate(id, data).then(data => {
-        res.send({
-            success:true,
-            data:data,
-            message: 'User updated.'
-        })
+        // res.send({
+        //     success:true,
+        //     data:data,
+        //     message: 'User updated.'
+        // })
+        res.redirect('/users');
     }).catch(err => {
         res.send({
             success:true,
