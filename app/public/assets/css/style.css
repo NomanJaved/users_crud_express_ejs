@@ -1,3 +1,16 @@
 .fas{
     padding: 0px 10px;
 }
+#create_form_container{
+    margin-top: 2%;
+    
+}
+#create_form_inner_container{
+    border: 1px solid #000;
+    padding: 50px;
+}
+.create_user_btn{
+    float: right;
+    display: inline;
+    margin: 10px;
+}

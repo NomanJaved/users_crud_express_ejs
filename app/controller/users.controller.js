@@ -3,19 +3,25 @@ const userModel = require('../model/user.model');
 exports.createUser = (req, res) => {
     console.log(req.body);
     
-    const user = new userModel(req.body);
-    user.save().then(data=>{
-        res.send({
-            success:true,
-            data:data
+    if(req.body == '' || typeof req.body == 'undefined'){
+        res.render('createUser');
+    }else{
+        console.log("req.body");
+        console.log(req.body);
+        const user = new userModel(req.body);
+        user.save().then(data=>{
+            req.flash('signupMessage', "User created successsfully.");
+            res.redirect('/users');            
         })
-    })
+    }
 }
 
 exports.getUsers = (req, res) => {
-    userModel.find().then(data => {
+    let signupMessage = req.flash('signupMessage');
+    userModel.find().then(data => {        
         res.render('userList', {
-            data: data
+            data: data,
+            msg: signupMessage
         })        
     })
 }
@@ -59,14 +65,15 @@ exports.updateUser = (req, res) => {
     })
 }
 
-exports.deleteUser = (req, res) => {
+exports.deleteUser = (req, res) => {    
     let id = req.params.id;
     let data = req.body;
     userModel.findByIdAndRemove(id).then(data => {
-        res.send({
-            success:true,
-            message:'Deleted Successfully'
-        })
+        // res.send({
+        //     success:true,
+        //     message:'Deleted Successfully'
+        // })
+        res.redirect('/users');
     }).catch(err => {
         res.send({
             success:true,
