@@ -1,9 +1,14 @@
 const userModel = require('../model/user.model');
 
 exports.createUser = (req, res) => {
-    console.log(req.body);
-    
-    if(req.body == '' || typeof req.body == 'undefined'){
+    // res.render('createUser');
+    var a = req.body;
+    console.log("a");
+    console.log(a);
+    console.log(typeof(req.body.user_name));
+    console.log(req.body.user_name);
+        
+    if(Object.keys(req.body).length === 0 || req.body == '' || req.body == null || typeof req.body == 'undefined' || req.body.user_name == 'undefined'){
         res.render('createUser');
     }else{
         console.log("req.body");
